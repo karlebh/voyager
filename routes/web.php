@@ -25,3 +25,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 
 Route::get('/posts', 'PostController@index');
+Route::get('/post/{post:slug}', 'PostController@show');
+Route::get('/like', 'LikeController@store');
+

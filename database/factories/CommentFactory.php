@@ -22,7 +22,7 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
+            'user_id' => UserFactory::new(),
             'content'    => $this->faker->text,
         ];
     }

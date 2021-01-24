@@ -26,8 +26,8 @@ class CategoryFactory extends Factory
         $name = $this->faker->name;
 
         return [
-            'user_id' => User::factory(),
-            'slug'    => trim(Str::limit(Str::slug($name, ''), 50)),
+            'user_id' => UserFactory::new(),
+            'slug'    => trim(Str::limit(Str::slug($name, '-'), 50)),
             'name'    => $name,
         ];
     }

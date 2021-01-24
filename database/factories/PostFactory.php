@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class PostFactory extends Factory
 {
@@ -24,10 +25,10 @@ class PostFactory extends Factory
         $title = $this->faker->sentence;
 
         return [
-            'user_id' => User::factory(),
-            'category_id' => Category::factory(),
+            'user_id' => UserFactory::new(),
+            'category_id' => CategoryFactory::new(),
             'title'    => $title,
-            'slug' => trim(Str::limit(Str::slug($title, ''), 50)),
+            'slug' => trim(Str::limit(Str::slug($title, '-'), 50)),
             'content' => $this->faker->text,
         ];
     }

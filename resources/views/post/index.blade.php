@@ -3,12 +3,17 @@
 @section('content')
 
     <Hello
-        one = "1"
-        two = "2"
+        :one = "1"
+        :two = "2"
         three = "3"
         four = "4"
     ></Hello>
 
-    hdhdhdh
+    @foreach ($posts as $post)
+        {{$post}}
+        <div class="">
+
+        </div>
+    @endforeach
 
 @endsection
