@@ -15,8 +15,8 @@ class CreatePostsTable extends Migration
         // Create table for storing roles
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->references('id')->on('users')->onDelete('set null');
-            $table->integer('category_id')->references('id')->on('categories')->onDelete('set null');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('category_id')->constrained();
             $table->string('slug')->unique();
             $table->string('title');
             $table->longText('content');

@@ -15,7 +15,7 @@ class CreateCategoriesTable extends Migration
         // Create table for storing categories
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('set null');
+            $table->foreignId('user_id')->constrained();
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('image')->nullable();
