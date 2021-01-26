@@ -24,7 +24,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
-Route::get('/posts', 'PostController@index');
-Route::get('/post/{post:slug}', 'PostController@show');
-Route::get('/like', 'LikeController@store');
+Route::get('/posts', 'PostController@index')->name('post.home');
+Route::get('/post/{post:slug}', 'PostController@show')->name('post.show');
+Route::post('/like', 'LikeController@store');
+Route::post('/unlike', 'LikeController@destroy');
+
+Route::post('/comment', 'CommentController@store')->name('comment.store');
+Route::post('/comment/{comment:slug}', 'CommentController@update')->name('comment.update');
 

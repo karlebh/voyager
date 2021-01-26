@@ -66,7 +66,7 @@ class User extends \TCG\Voyager\Models\User
 
     public function likes() 
     {
-        return $this->hashMany(Like::class);
+        return $this->hasMany(Like::class);
     }
 
     public function comments() 

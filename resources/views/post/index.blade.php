@@ -2,18 +2,15 @@
 
 @section('content')
 
-    <Hello
-        :one = "1"
-        :two = "2"
-        three = "3"
-        four = "4"
-    ></Hello>
-
     @foreach ($posts as $post)
-        {{$post}}
-        <div class="">
-
+        <div class="mx-3 mt-4 ">
+            <a href="{{ route('post.show', $post->slug)}}">
+                {{ Str::limit($post->content, 200) }}
+            </a>
         </div>
+
     @endforeach
+
+    {{ $posts->links() }}
 
 @endsection

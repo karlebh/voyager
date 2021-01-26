@@ -15,14 +15,30 @@
 
         <!-- Scripts -->
         <script src=" {{ asset('js/app.js') }} " defer></script>
+        <script src=" {{ asset('js/xtra.js') }} " defer></script>
+
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen">
 
             <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{-- {{ $header }} --}}
+            <header style="" class="h-24 shadow bg-gray-200">
+                <div class="flex flex-row justify-between px-3">
+                    <div class="">
+                        <h1 class="text-purple-700 font-bold text-2xl"><a href=" {{ route('post.home')}} ">Voyage</a>r</h1>
+                    </div>
+    
+                    <div class="mt-15 lg:hidden">
+                        <button id="hambuger" class="mb-1 relative cursor-pointer">Hambuger</button>
+
+                        <div id="mobileNav" class="hidden transition duration-500 ease-in-out bg-gray-700 rounded-sm shadow-lg mt-2 -mr-3 relative z-20 text-white text-center w-56 flex flex-col ">
+                            <a href="" class="py-2 hover:bg-gray-400 transition duration-500 ease-in-out">Posts</a>
+                            <a href="" class="py-2 hover:bg-gray-400 transition duration-500 ease-in-out">Categories</a>
+                            <a href="" class="py-2 hover:bg-gray-400 transition duration-500 ease-in-out">Menu</a>
+                            <a href="" class="py-2 hover:bg-gray-400 transition duration-500 ease-in-out">Others</a>
+                            <a id="closeMenu" class=" py-2 cursor-pointer hover:bg-gray-400">X</a>
+                        </div>
+                    </div>
                 </div>
             </header>
 
@@ -32,7 +48,9 @@
             </main>
         </div>
 
-        {{-- @stack('') --}}
+        <footer class="flex flex-col justify-center items-center h-20 py-10 bg-green-700 text-white font-bold">
+            {{ date('Y')}}
+        </footer>
 
     </body>
 </html>

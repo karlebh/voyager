@@ -17,21 +17,28 @@ class LikeController extends Controller
     {
         $data = $request->validate([
             'likeable_id' => ['required', 'integer'],
-            'likeable_type' => ['required', 'string'],
-            'count' => ['']
+            'likeable_type' => ['required', 'string']
         ]);
 
-        Like::firstOrCreate($data->validated());
+        $request->user()->likes()->firstOrCreate($data);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Like  $like
+     * @param \Illuminate\Http\Request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Like $like)
+    public function destroy(Request $request)
     {
-        //
+        $data = $request->validate([
+             'likeable_id' => ['required', 'integer'],
+            'likeable_type' => ['required', 'string']
+        ]);
+
+        Like::whereLikeableId($request->likeable_id)
+                ->whereLikeableType($request->likeable_type)
+                ->whereUserId($request->user()->id)
+                ->delete();
     }
 }

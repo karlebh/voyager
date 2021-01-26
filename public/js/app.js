@@ -1940,26 +1940,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['likeable_id', 'likeable_type'],
-  computed: {
-    Liked: function Liked() {
-      return true;
-    }
+  props: ['likeable_id', 'likeable_type', 'is_liked', 'like_count'],
+  data: function data() {
+    return {
+      count: this.like_count,
+      liked: this.is_liked
+    };
   },
   methods: {
     like: function like() {
       axios.post('/like', {
         likeable_id: this.likeable_id,
         likeable_type: this.likeable_type
-      }).then(function (response) {
-        console.log(response);
-      })["catch"](function (err) {
-        console.log(err);
       });
+      this.liked = true;
+      this.count++;
     },
-    unlike: function unlike() {}
+    unlike: function unlike() {
+      axios.post('/unlike', {
+        likeable_id: this.likeable_id,
+        likeable_type: this.likeable_type
+      });
+      this.liked = false;
+      this.count--;
+    }
   }
 });
 
@@ -19657,11 +19662,11 @@ var render = function() {
           {
             name: "show",
             rawName: "v-show",
-            value: !_vm.Liked,
-            expression: "!Liked"
+            value: !_vm.liked,
+            expression: "!liked"
           }
         ],
-        staticClass: "cursor-pointer",
+        staticClass: "cursor-pointer text-green-700 font-extrabold text-3xl",
         on: { click: _vm.like }
       },
       [_vm._v("like")]
@@ -19674,21 +19679,30 @@ var render = function() {
           {
             name: "show",
             rawName: "v-show",
-            value: _vm.Liked,
-            expression: "Liked"
+            value: _vm.liked,
+            expression: "liked"
           }
         ],
-        staticClass: "cursor-pointer",
+        staticClass: "cursor-pointer text-red-700 font-extrabold text-3xl",
         on: { click: _vm.unlike }
       },
       [_vm._v("unlike")]
     ),
-    _vm._v(
-      "\n    " +
-        _vm._s(_vm.likeable_id) +
-        "\n    " +
-        _vm._s(_vm.likeable_type) +
-        " \n"
+    _vm._v(" "),
+    _c(
+      "span",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.count > 0,
+            expression: "count > 0"
+          }
+        ],
+        staticClass: "text-purple-700 font-extrabold"
+      },
+      [_vm._v(_vm._s(_vm.count))]
     )
   ])
 }
