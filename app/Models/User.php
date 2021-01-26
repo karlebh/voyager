@@ -73,4 +73,9 @@ class User extends \TCG\Voyager\Models\User
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function profile() 
+    {
+        return $this->hasOne(profile::class);
+    }
 }
