@@ -1,10 +1,10 @@
 
 <div class="flex justify-center align-middle">
-   <form id="commentForm" method="POST" action="{{ route('comment.store') }}">
+   <form id="commentForm" class="commentForm" method="POST" action="{{ route('comment.store') }}">
         @csrf
 
         <input type="hidden" name="post_id" value="{{ $post->id }}">
-        {{-- <input type="hidden" name="post_id" value="{{ $comment->parent_id }}"> --}}
+        <input type="hidden" name="parent_id" value="">
         <div>
             <h3 class="mb-2">Enter your comment here!</h3>
             <textarea class="bg-gray-200 p-2" name="content" id="" cols="60" rows="10"></textarea>

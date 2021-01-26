@@ -30,5 +30,7 @@ Route::post('/like', 'LikeController@store');
 Route::post('/unlike', 'LikeController@destroy');
 
 Route::post('/comment', 'CommentController@store')->name('comment.store');
-Route::post('/comment/{comment:slug}', 'CommentController@update')->name('comment.update');
+Route::post('/comment/{comment:id}', 'CommentController@update')->name('comment.update');
+Route::post('/comment/{comment:id}/show', 'CommentController@show')->name('comment.show');
 
+Route::resource('/category', 'CategoryController');

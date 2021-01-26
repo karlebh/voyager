@@ -1948,6 +1948,9 @@ __webpack_require__.r(__webpack_exports__);
       liked: this.is_liked
     };
   },
+  mounted: function mounted() {
+    this.like_count ? '' : this.commentLikeData();
+  },
   methods: {
     like: function like() {
       axios.post('/like', {
@@ -1964,6 +1967,14 @@ __webpack_require__.r(__webpack_exports__);
       });
       this.liked = false;
       this.count--;
+    },
+    commentLikeData: function commentLikeData() {
+      var _this = this;
+
+      axios.post('/comment/' + this.likeable_id + '/show').then(function (response) {
+        _this.liked = response.data[0];
+        _this.count = response.data[1];
+      });
     }
   }
 });

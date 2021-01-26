@@ -22,6 +22,10 @@ export default {
         }
     },
 
+    mounted() {
+        this.like_count ? '' : this.commentLikeData()
+    },
+
     methods: {
         like() {
             axios.post('/like', {
@@ -39,6 +43,14 @@ export default {
                 })
                 this.liked = false
                 this.count--
+        },
+
+        commentLikeData() {
+            axios.post('/comment/' + this.likeable_id + '/show')
+                .then(response => {
+                        this.liked = response.data[0]
+                        this.count = response.data[1]
+                })
         }
     }
 }

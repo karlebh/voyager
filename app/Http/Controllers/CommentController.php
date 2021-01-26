@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Like;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -27,15 +28,18 @@ class CommentController extends Controller
         return back();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Comment $comment)
+    public function show($id)
     {
-        //
+        $commentLiked = Like::whereUserId(request()->user()->id)
+                    ->whereLikeableId($id)
+                    ->whereLikeableType('App\Models\Comment')
+                    ->exists();
+
+        $commentLikeCount = Like::whereLikeableId($id)
+                        ->whereLikeableType('App\Models\Comment')
+                        ->count();
+
+        return [$commentLiked, $commentLikeCount];
     }
 
     /**

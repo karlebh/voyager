@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div>
+    <div >
         <article class="mx-4 my-2 p-2">
             <p>{{$post->content}}</p>
             <small>by {{$post->user->name}} in {{$post->category->name}}</small>

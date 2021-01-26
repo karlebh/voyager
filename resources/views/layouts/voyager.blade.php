@@ -22,23 +22,25 @@
         <div class="min-h-screen">
 
             <!-- Page Heading -->
-            <header style="" class="h-24 shadow bg-gray-200">
+            <header style="" class="flex flex-col shadow bg-gray-200">
                 <div class="flex flex-row justify-between px-3">
                     <div class="">
                         <h1 class="text-purple-700 font-bold text-2xl"><a href=" {{ route('post.home')}} ">Voyage</a>r</h1>
                     </div>
+                </div>
     
-                    <div class="mt-15 lg:hidden">
-                        <button id="hambuger" class="mb-1 relative cursor-pointer">Hambuger</button>
+                <div class="mt-15 lg:hidden">
+                        <button id="hambuger" class="float-right mb-1 relative cursor-pointer">Hambuger</button>
 
-                        <div id="mobileNav" class="hidden transition duration-500 ease-in-out bg-gray-700 rounded-sm shadow-lg mt-2 -mr-3 relative z-20 text-white text-center w-56 flex flex-col ">
-                            <a href="" class="py-2 hover:bg-gray-400 transition duration-500 ease-in-out">Posts</a>
-                            <a href="" class="py-2 hover:bg-gray-400 transition duration-500 ease-in-out">Categories</a>
-                            <a href="" class="py-2 hover:bg-gray-400 transition duration-500 ease-in-out">Menu</a>
-                            <a href="" class="py-2 hover:bg-gray-400 transition duration-500 ease-in-out">Others</a>
-                            <a id="closeMenu" class=" py-2 cursor-pointer hover:bg-gray-400">X</a>
+                        <div id="mobileNav" class="w-full hidden transition duration-500 ease-in-out bg-gray-700 shadow-lg mt-2 relative z-20 text-white flex flex-col ">
+                            <a 
+                                href="{{ route('post.home') }}" 
+                                class="pb-2 pt-4 pl-15 font-semibold hover:bg-gray-400 transition duration-500 ease-in-out"
+                            >Posts</a>
+                            <a href="{{ route('category.index') }}" class="py-2 pl-15 font-semibold hover:bg-gray-400 transition duration-500 ease-in-out">Categories</a>
+                            <a href="" class="py-2 pl-15 font-semibold hover:bg-gray-400 transition duration-500 ease-in-out">Menu</a>
+                            <a href="" class="pt-2 pb-4 pl-15 font-semibold hover:bg-gray-400 transition duration-500 ease-in-out">Others</a>
                         </div>
-                    </div>
                 </div>
             </header>
 

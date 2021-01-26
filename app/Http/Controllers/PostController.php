@@ -37,10 +37,11 @@ class PostController extends Controller
                         ->whereLikeableId($post->id)
                         ->whereLikeableType('App\Models\Post')
                         ->exists();
-
+                        
         $likeCount = Like::whereLikeableId($post->id)
+                        ->whereLikeableType('App\Models\Post')
                         ->count();
-
+      
         return view('post.show', compact('post', 'comments', 'isLiked', 'likeCount'));
     }
 }
